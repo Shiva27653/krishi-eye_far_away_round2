@@ -1,0 +1,116 @@
+# === Dependencies ===
+node_modules/
+.pnp
+.pnp.js
+
+# === Build Output ===
+dist/
+build/
+.next/
+out/
+*.tsbuildinfo
+
+# === Environment & Secrets ===
+.env
+.env.*
+!.env.example
+
+# === OS & Editor ===
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# === Logs & Debug ===
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# === Database ===
+*.sqlite
+*.db
+*.db-journal
+
+# === Python Bytecode ===
+__pycache__/
+*.pyc
+*.pyo
+
+# === Agent / AI Dev Tools ===
+.agent/
+.gemini/
+.gsd/
+**/task.md
+**/task_plan.md
+**/findings.md  
+**/progress.md
+**/context-*.md
+**/implementation_plan.md
+**/walkthrough.md
+**/*.tmp
+
+# === Internal / Reference-Only (local dev support) ===
+adapters/
+prompts/
+scripts/
+docs/
+automation/
+
+# === Non-Production Root Markdown ===
+COMPREHENSIVE_PROGRESS.md
+GSD-STYLE.md
+PRESENTATION.md
+PROJECT_RULES.md
+ROADMAP.md
+SPEC.md
+STACK.md
+STATE.md
+walkthrough.md
+deployment-readiness.md
+PROJECT_CONTEXT.md
+model_capabilities.yaml
+
+# === Non-Production App Docs ===
+apps/ai-service/EVALUATION.md
+apps/ai-service/INTEGRATION.md
+apps/api/TEST_PLAN.md
+apps/api/compile_errors.txt
+apps/api/compile_errors_utf8.txt
+apps/api/fix_imports.js
+
+# === Mobile Build Artifacts ===
+.expo/
+android/
+ios/
+
+# === Temporary / Audit ===
+repo_audit/
+tracked_files_remote.txt
+remote_tree.txt
+
+# Internal dev docs in app folders
+apps/web/demo.md
+apps/web/deployment.md
+apps/web/release_validation.md
+apps/api/TEST_PLAN.md
+apps/api/compile_errors*
+apps/api/fix_imports.js
+apps/api/scripts/
+
+
+# === Hardware ===
+# Ignore large binary assets
+krishi-eye/models/
+krishi-eye/calib/
+*.hef
+*.npz
+
+# Allow the source code
+!krishi-eye/
+!krishi-eye/hardware/
+!krishi-eye/hardware/**/*.py
+!krishi-eye/preflight.sh
+!krishi-eye/README.md
+!krishi-eye/.env.example

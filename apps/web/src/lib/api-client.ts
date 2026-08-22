@@ -1,0 +1,78 @@
+'use client'
+
+// API routes have no version prefix; strip /v1 automatically if callers include it
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
+
+export async function apiRequest<T>(
+    endpoint: string,
+    options: RequestInit = {}
+): Promise<T> {
+    // URI Versioning is enabled on the backend; prepend /v1 if missing
+    const absoluteEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
+    const normalizedEndpoint = absoluteEndpoint.startsWith('/v1/') ? absoluteEndpoint : `/v1${absoluteEndpoint}`;
+
+    const headers = new Headers(options.headers);
+    if (!(options.body instanceof FormData)) {
+        headers.set('Content-Type', 'application/json');
+    }
+
+    // S-01: Attach JWT from localStorage if present
+    if (typeof window !== 'undefined') {
+        const token = localStorage.getItem('auth_token');
+        if (token) {
+            headers.set('Authorization', `Bearer ${token}`);
+        }
+
+        // Explicitly remove legacy localStorage tokens if found to prevent confusion
+        const legacyToken = localStorage.getItem('token') || localStorage.getItem('jwt') || localStorage.getItem('access_token');
+        if (legacyToken) {
+            localStorage.removeItem('token');
+            localStorage.removeItem('jwt');
+            localStorage.removeItem('access_token');
+            console.log('Purged legacy localStorage authentication tokens.');
+        }
+    }
+
+    const response = await fetch(`${BASE_URL}${normalizedEndpoint}`, {
+        ...options,
+        headers,
+        credentials: 'include', // Include HTTP-Only cookies automatically
+    });
+
+    if (!response.ok) {
+        // NOTE: Do NOT redirect on 401 here. The dashboard layout handles
+        // auth redirects via router.push (soft navigation). Using
+        // window.location.href caused infinite reload loops because
+        // AuthProvider's session check always triggers on mount.
+        const errorData = await response.json().catch(() => ({}));
+        // Normalize: NestJS may return { message: { message: "...", error: "..." } }
+        let errorMsg = 'Request failed';
+        if (typeof errorData.message === 'string') {
+            errorMsg = errorData.message;
+        } else if (typeof errorData.message?.message === 'string') {
+            errorMsg = errorData.message.message;
+        } else if (typeof errorData.error === 'string') {
+            errorMsg = errorData.error;
+        }
+        throw new Error(errorMsg);
+    }
+
+    if (response.status === 204) {
+        return {} as T;
+    }
+
+    const data = await response.json();
+
+    // Attach PWA metadata if present (for Phase 2 indicators)
+    if (typeof data === 'object' && data !== null) {
+        const cacheHeader = response.headers.get('X-PWA-Cache');
+        if (cacheHeader) {
+            data._pwa = {
+                cache: cacheHeader,
+                cachedAt: response.headers.get('X-PWA-Cached-At')
+            };
+        }
+    }
+
+    return data;
+}
