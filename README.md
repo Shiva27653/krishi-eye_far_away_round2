@@ -1,7 +1,6 @@
 # KRISHI-EYE 🌾 | Precision Agriculture Platform
 
 
-[![live youtube link:](https://youtu.be/R70bvMDXpT4)](#)
 [![Security: HttpOnly Cookies](https://img.shields.io/badge/Security-HttpOnly%20Cookies-green.svg)](#)
 [![Stack: Monorepo](https://img.shields.io/badge/Stack-Monorepo-blue.svg)](#)
 [![AI: RAG Powered](https://img.shields.io/badge/AI-RAG%20Powered-orange.svg)](#)
@@ -11,6 +10,11 @@
 
 ---
 
+**Live YouTube Link:**
+
+[![Live YouTube Link](https://img.youtube.com/vi/R70bvMDXpT4/0.jpg)](https://youtu.be/R70bvMDXpT4)
+
+---
 
 
 
