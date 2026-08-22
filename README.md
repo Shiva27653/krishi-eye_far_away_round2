@@ -1,5 +1,7 @@
 # KRISHI-EYE 🌾 | Precision Agriculture Platform
 
+
+[![live youtube link:](https://youtu.be/R70bvMDXpT4)](#)
 [![Security: HttpOnly Cookies](https://img.shields.io/badge/Security-HttpOnly%20Cookies-green.svg)](#)
 [![Stack: Monorepo](https://img.shields.io/badge/Stack-Monorepo-blue.svg)](#)
 [![AI: RAG Powered](https://img.shields.io/badge/AI-RAG%20Powered-orange.svg)](#)
@@ -8,6 +10,9 @@
 **KRISHI-EYE** is a production-grade precision agriculture platform designed for Indian farmers. It integrates real-time tractor telemetry, computer-vision disease detection, and LLM-powered agronomic advisory to transition farming from "blanket treatment" to "precision intervention."
 
 ---
+
+
+
 
 ## 🚀 Live Demo & Dashboard
 
@@ -102,5 +107,3 @@ KRISHI-EYE implements production-grade security including:
 - **Rate Limiting**: Throttling on all auth and telemetry ingestion endpoints.
 
 ---
-
-MIT © [Soham Rangnekar](https://github.com/soham25-git)
