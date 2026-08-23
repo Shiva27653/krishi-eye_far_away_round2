@@ -16,7 +16,7 @@
 
 **Live YouTube Link:**
 
-[![Live YouTube Link](https://img.youtube.com/vi/R70bvMDXpT4/0.jpg)]([https://youtu.be/R70bvMDXpT4](https://youtu.be/JFyuncV20Y4))
+[![Live YouTube Link](https://img.youtube.com/vi/JFyuncV20Y4/0.jpg)](https://youtu.be/JFyuncV20Y4)
 
 ---
 
